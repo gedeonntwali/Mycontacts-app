@@ -1,0 +1,6 @@
+<h1> Contact </h1>
+<h2><%= @contact.first_name %></h2>
+<h2><%= @contact.last_name %></h2>
+<h2><%= @contact.adress %></h2>
+
+<%= button_to "Delete", "/contacts/#{@contact.id}", method: :delete %>
