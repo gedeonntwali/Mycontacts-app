@@ -1,3 +1,4 @@
+<%= button_to"Home Page","/contacts", method: :get %>
 <h1> Edit Contact </h1>
 <%= form_tag "/contacts/#{@contact.id}", method: :patch do%>
   <div class="form-group">

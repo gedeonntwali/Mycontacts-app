@@ -19,24 +19,30 @@ class ContactsController < ApplicationController
     phone = params[:phone]
     contact = Contact.new({first_name: first_name, last_name: last_name, adress: adress, phone: phone})
     contact.save
+    flash[:success] = "Contact Created"
+    redirect_to "/contacts/#{contact.id}"
   end
 
   def edit
     @contact = Contact.find_by(id: params[:id])
   end
 
-  def update
-    @contact = Contact.find_by(id: params[:id])
-    @contact.first_name = params[:first_name]
-    @contact.last_name = params[:last_name]
-    @contact.adress = params[:adress]
-    @contact.phone = params[:phone]
-    @contact.save
+  def update    
+    contact = Contact.find_by(id: params[:id])
+    contact.first_name = params[:first_name]
+    contact.last_name = params[:last_name]
+    contact.adress = params[:adress]
+    contact.phone = params[:phone]
+    contact.save
+    flash[:success] = "Contact Updated"
+    redirect_to "/contacts/#{contact.id}"
   end
 
   def destroy
     @contact = Contact.find_by(id: params[:id])
     @contact.destroy
+    flash[:success] = "Contact Destroyed"
+    redirect_to "/contacts"
   end
   
 end

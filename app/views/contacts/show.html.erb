@@ -1,6 +1,11 @@
+<%= button_to"Home Page","/contacts", method: :get %>
 <h1> Contact </h1>
-<h2><%= @contact.first_name %></h2>
-<h2><%= @contact.last_name %></h2>
-<h2><%= @contact.adress %></h2>
+
+<h3>First_Name:<%= @contact.first_name %></h3>
+<h3>Last_Name:<%= @contact.last_name %></h3>
+<h3>Adress:<%= @contact.adress %></h3>
+<h3>Phone Number: <%= @contact.phone %></h3>
+<h3>Updated Date:<%= @contact.friendly_update_at %></h3>
 
 <%= button_to "Delete", "/contacts/#{@contact.id}", method: :delete %>
+<%= button_to "Edit", "/contacts/#{@contact.id}/edit", method: :get %>

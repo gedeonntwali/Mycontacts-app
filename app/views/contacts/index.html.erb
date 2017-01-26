@@ -1,15 +1,15 @@
 <h1>Gideon's Adrees</h1>
 
-<table>
+<table class= "table table border">
   <tr>
-    <th></th>  First_Name  </th>
-    <th></th>  Last_Name  </th>
-    <th></th>  Adress  </th>
-    <th></th>  Phone  </th>
+    <th>  First_Name  </th>
+    <th>  Last_Name  </th>
+    <th>  Adress  </th>
+    <th>  Phone  </th>
   </tr>
   <% @contacts.each do |contact| %>
     <tr>
-      <td><%= contact.first_name %></td>
+      <td><%= link_to contact.first_name, "/contacts/#{contact.id}"%></td>
       <td><%= contact.last_name %></td>
       <td><%= contact.adress %></td>
       <td><%= contact.phone %></td>
@@ -17,3 +17,5 @@
   <% end %>
 
 </table>
+
+<%= button_to "Add New Contact", "/contacts/new", method: :get %>
