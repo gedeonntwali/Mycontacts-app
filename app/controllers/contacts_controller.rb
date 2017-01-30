@@ -52,5 +52,14 @@ class ContactsController < ApplicationController
     flash[:success] = "Contact Destroyed"
     redirect_to "/contacts"
   end
+
+  def search
+    search_query = params[:search_input]
+    @contacts = Contact.where("first_name LIKE ? OR last_name LIKE ?", "%#{search_query}%", "%#{search_query}%")
+    if @contacts.empty?
+      flash[:info] = "No contacts found in search"
+    end
+    render :index
+  end
   
 end
