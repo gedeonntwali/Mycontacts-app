@@ -1,15 +1,18 @@
 <%= button_to"Home Page","/contacts", method: :get %>
 <h1> Contact </h1>
 
-<h3>First_Name:<%= @contact.first_name %></h3>
-<h3>Middle_Name:<%= @contact.middle_name %></h3>
-<h3>Last_Name:<%= @contact.last_name %></h3>
-<h3>Bio:<%= @contact.bio %></h3>
-<h3>Adress:<%= @contact.adress %></h3>
-<h3>Longitude:<%= @contact.longitude %></h3>
-<h3>Latitude:<%= @contact.latitude %></h3>
-<h3>Phone Number: <%= @contact.phone %></h3>
-<h3>Updated Date:<%= @contact.friendly_update_at %></h3>
+<h3>First_Name :<%= @contact.first_name %></h3>
+<h3>Middle_Name :<%= @contact.middle_name %></h3>
+<h3>Last_Name :<%= @contact.last_name %></h3>
+<h3>Bio :<%= @contact.bio %></h3>
+<h3>Adress :<%= @contact.adress %></h3>
+<h3>Longitude :<%= @contact.longitude %></h3>
+<h3>Latitude :<%= @contact.latitude %></h3>
+<h3>Phone Number : <%= @contact.phone %></h3>
+<h3>Updated Date :<%= @contact.friendly_update_at %></h3>
+<% @contact.groups.each do |group| %>
+  <li><%= group.name %></li>
+<% end %>
 
 <%= button_to "Delete", "/contacts/#{@contact.id}", method: :delete %>
 <%= button_to "Edit", "/contacts/#{@contact.id}/edit", method: :get %>

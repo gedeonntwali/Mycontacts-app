@@ -1,8 +1,11 @@
 class ContactsController < ApplicationController
 
   def index
-    @contacts = Contact.all
-    render "index.html.erb"
+    if params[:group]
+      @contacts =  Group.find_by(name: params[:group]).contacts
+    else
+      @contacts = Contact.all
+    end
   end
 
   def show
@@ -16,12 +19,12 @@ class ContactsController < ApplicationController
     first_name = params[:first_name]
     middle_name = params[:middle_name]
     last_name = params[:last_name]
-    biography = params[:biography]
+    bio = params[:bio]
     adress = params[:adress]
     longitude = params[:longitude]
     latitude = params[:latitude]
     phone = params[:phone]
-    contact = Contact.new({first_name: first_name, middle_name: middle_name, last_name: last_name, biography: biography, adress: adress, longitude: longitude, latitude: latitude, phone: phone})
+    contact = Contact.new({first_name: first_name, middle_name: middle_name, last_name: last_name, bio: bio, adress: adress, longitude: longitude, latitude: latitude, phone: phone})
     contact.save
     flash[:success] = "Contact Created"
     redirect_to "/contacts/#{contact.id}"
@@ -36,7 +39,7 @@ class ContactsController < ApplicationController
     contact.first_name = params[:first_name]
     contact.middle_name = params[:middle_name]
     contact.last_name = params[:last_name]
-    biography = params[:biography]
+    contact.bio = params[:bio]
     contact.adress = params[:adress]
     contact.longitude = params[:longitude]
     contact.latitude = params[:latitude]
